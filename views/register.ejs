@@ -1,5 +1,22 @@
 <% include ./partials/header %>
 
-<h1>Registration Form goes here</h1>
+<h1 class="text-center">Sign Up</h1>
+
+<div class="container">
+    <form action="/register" method="POST" class="border border-dark p-4">
+        <div class="form-group">
+            <input type="email" name="registerInfo[email]" class="form-control" placeholder="Enter a valid Email" autofocus required>
+        </div>
+        <div class="form-group">
+            <input type="password" name="registerInfo[password]" class="form-control" placeholder="Enter a Password" required>
+        </div>
+        <div class="form-group">
+            <input type="password" name="registerInfo[confirmPassword]" class="form-control" placeholder="Confirm your Password" required>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-lg btn-outline-success form-control py-0">Submit</button>
+        </div>
+    </form>
+</div>
 
 <% include ./partials/footer %>
