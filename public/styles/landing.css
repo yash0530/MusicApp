@@ -44,6 +44,28 @@ a:hover {
     color: #777 !important;
 }
 
+.scrolled {
+    background-color: #fff;
+    /* transition: all 300ms linear; */
+    box-shadow: 0px 1px #ccc;
+}
+
+.scrolled:hover {
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+}
+
+.scrolled a {
+    color: rgba(0,0,0,.5) !important;
+}
+
+.scrolled a:hover {
+    color: rgba(0,0,0,.8) !important;
+}
+
+.scrolled .nav-head {
+    color: #ff5252 !important;
+}
+
 /* -- landing -- */
 .landing {
     width: 100%;
@@ -75,16 +97,6 @@ a:hover {
 .desc {
     padding: 10px;
     font-size: 1.3rem;
-}
-
-@media screen and (max-width: 600px) {
-    .desc {
-        font-size: 0.9rem;
-    }
-
-    .head {
-        font-size: 3rem;
-    }
 }
 
 /* -- on scroll section -- */
