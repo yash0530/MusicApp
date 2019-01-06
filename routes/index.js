@@ -1,26 +1,50 @@
-const express = require("express"),
-      router = express.Router(),
-      passport = require("passport");
+// Modules
+const express = require("express");
+const passport = require("passport");
+const User = require("../models/User");
 
-router.get("/register", function(req, res){
-    res.render("register");
+// Setting up the router
+const router = express.Router({ mergeParams: true });
+
+// Routes
+router.get("/", (req, res) => res.render("landing"));
+
+// Register Routes
+router.get("/register", (req, res) => res.render("auth/register"));
+
+router.post("/register", (req, res) => {
+    const newUser = new User({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email
+    });
+    User.register(newUser, req.body.password, (err, user) => {
+        if (err) {
+            console.log(err);
+            return res.redirect('/register');
+        }
+        passport.authenticate("local")(req, res, () => {
+            res.redirect('/secret');
+        });
+    });
 });
 
-router.post("/register", function(req, res){
-    res.send("HANDLE REGISTRATION LOGIC HERE");
-});
+// Login Routes
+router.get("/login", (req, res) => res.render("auth/login"));
 
-router.get("/login", function(req, res){
-    res.render("login");
-});
+router.post('/login', 
+    passport.authenticate('local', {
+        successRedirect: '/secret',
+        failureRedirect: '/login'
+    })
+);
 
-router.post("/login", function(req, res){
-    res.send("HANDLE LOGIN LOGIC HERE");
-});
-
-router.get("/logout", function(req, res){
+// Logout Route
+router.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("/");
+    res.redirect('/');
 });
+
+router.get("/secret", require("../middlewares").isLoggedIn, (req, res) => res.send("Woba Loba Dub Dub"));
 
 module.exports = router;
