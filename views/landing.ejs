@@ -1,5 +1,64 @@
-<% include ./partials/header %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Music</title>
+    <link rel="stylesheet" href="/styles/landing.css">
+</head>
+<body>
+    <!-- navbar -->
+    <nav>
+        <div class="nav-head">MUSIC</div>
+        <ul class="nav-items">
+            <% if (user) { %>
+                <a href="#"><%= user.firstname %></a>
+                <a href="/logout">Logout</a>
+            <% } else { %>
+                <a href="/login">Login</a>
+                <a href="/register">Join Now</a>
+            <% } %>
+        </ul>
+    </nav>
 
-<h1>Landing Page for Music App</h1>
+    <!-- landing -->
+    <div class="landing">
+        <div class="centered">
+            <div class="head">MUSIC</div>
+            <p class="desc">Not another Music App</p>
+        </div>
+    </div>
 
-<% include ./partials/footer %>
+    <!-- on scroll section -->
+    <pre>
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+        CONTENT
+    </pre>
+
+    <!-- footer -->
+</body>
+</html>

@@ -24,7 +24,7 @@ router.post("/register", (req, res) => {
             return res.redirect('/register');
         }
         passport.authenticate("local")(req, res, () => {
-            res.redirect('/secret');
+            res.redirect('/');
         });
     });
 });
@@ -34,7 +34,7 @@ router.get("/login", (req, res) => res.render("auth/login"));
 
 router.post('/login', 
     passport.authenticate('local', {
-        successRedirect: '/secret',
+        successRedirect: '/',
         failureRedirect: '/login'
     })
 );
@@ -44,7 +44,5 @@ router.get("/logout", (req, res) => {
     req.logout();
     res.redirect('/');
 });
-
-router.get("/secret", require("../middlewares").isLoggedIn, (req, res) => res.send("Woba Loba Dub Dub"));
 
 module.exports = router;
