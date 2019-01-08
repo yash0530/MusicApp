@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // passport Configuration
 app.use(require('express-session')({
-    secret: process.env.SECRET,
+    secret: process.env.SECRET || "secret",
     resave: false,
     saveUninitialized: false
 }));
@@ -42,4 +42,4 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use("/", require("./routes/index"));
 
 // starting server
-app.listen(3000, () => console.log("MusicApp Server Started"));
+app.listen(process.env.PORT || 3000, process.env.IP);
