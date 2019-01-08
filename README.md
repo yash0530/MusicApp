@@ -1,7 +1,13 @@
 # MusicApp
 
-### Getting Started
-* clone this locally
-* install dependencies `npm install`
-* start server `nodemon`
-* preview app at **localhost:3000**
+### Usage
+
+```sh
+$ npm install # installing dependencies
+```
+
+```sh
+$ nodemon # start the server  
+
+# Visit http://localhost:3000
+```

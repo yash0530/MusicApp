@@ -6,21 +6,21 @@
         <div class="col-md-10 col-lg-8 col-xl-6">
             <form action="/register" method="POST">
                 <div class="heading-2 text-center mt-3">JOIN NOW</div>
+                <% include ../partials/messages %>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" id="name" placeholder="Enter Name" name="name" value="<%= typeof name != 'undefined' ? name : '' %>">
+                </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="firstname">First Name</label>
-                    <input class="form-control" id="firstname" placeholder="First Name" name="firstname" required>
-                </div>
-                <div class="form-group">
-                    <label for="lastname">Last Name</label>
-                    <input class="form-control" id="lastname" placeholder="Last Name" name="lastname" required>
+                    <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" value="<%= typeof email != 'undefined' ? email : '' %>">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" minlength="6" required>
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" value="<%= typeof password != 'undefined' ? password : '' %>">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Confirm Password" name="password2" value="<%= typeof password2 != 'undefined' ? password2 : '' %>">
                 </div>
                 <a href="/login" class="btn btn-outline-dark mr-2 pl-4 pr-4 ">Login</a>
                 <button type="submit" class="btn btn-outline-danger pl-4 pr-4">Join Now</button>
