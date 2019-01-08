@@ -2,8 +2,7 @@
 
 | Fields                | Type                 |            |
 | --------------------- | -------------------- | ---------- |
-| firstname             | String
-| lastname              | String
+| name                  | String
 | email                 | String               | Auth
 | password              | String               | Auth
 | created               | Date
