@@ -20,7 +20,7 @@ const User = require("./models/User");
 mongoose.connect(process.env.MUSICAPPDB || "mongodb://localhost/music_app", { useNewUrlParser: true });
 
 // express session middleware
-app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
+app.use(session({ secret: process.env.SECRET || 'secret', resave: true, saveUninitialized: true }));
 
 // bodyParser middleware
 app.use(express.urlencoded({extended: true}));
