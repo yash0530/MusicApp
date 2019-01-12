@@ -14,9 +14,6 @@ app.use(express.static(__dirname + '/public'));
 // passport config
 require('./config/passport')(passport);
 
-// models
-const User = require("./models/User");
-
 // connecting to DB
 const mongoURI = "mongodb://localhost:27017/music_app"
 mongoose.connect(process.env.MUSICAPPDB || mongoURI, { useNewUrlParser: true });
