@@ -33,28 +33,28 @@ router.post("/register", (req, res) => {
 
     else {
         User.findOne({ email })
-        .then(user => {
-            if (user) {
-                errors.push({ msg: 'Email already exists' });
-                res.render("auth/register", { errors, ...req.body });
-            }
-            else {
-                const newUser  = new User({ name, email, password });
+            .then(user => {
+                if (user) {
+                    errors.push({ msg: 'Email already exists' });
+                    res.render("auth/register", { errors, ...req.body });
+                }
+                else {
+                    const newUser = new User({ name, email, password });
 
-                bcrypt.genSalt(10, (err, salt) => {
-                    bcrypt.hash(newUser.password, salt, (err, hash) => {
-                        if (err) throw err;
-                        newUser.password = hash;
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(newUser.password, salt, (err, hash) => {
+                            if (err) throw err;
+                            newUser.password = hash;
 
-                        newUser.save()
-                        .then(user => {
-                            req.flash('success_msg', 'You are now registered, please login to continue');
-                            res.redirect('/login');
+                            newUser.save()
+                                .then(user => {
+                                    req.flash('success_msg', 'You are now registered, please login to continue');
+                                    res.redirect('/login');
+                                });
                         });
                     });
-                });
-            }
-        });
+                }
+            });
     }
 });
 
@@ -63,9 +63,9 @@ router.get("/login", (req, res) => res.render("auth/login"));
 
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
-         successRedirect: '/',
-         failureRedirect: '/login',
-         failureFlash: true
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true
     })(req, res, next);
 });
 

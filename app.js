@@ -23,7 +23,7 @@ mongoose.connect(process.env.MUSICAPPDB || "mongodb://localhost/music_app", { us
 app.use(session({ secret: process.env.SECRET || 'secret', resave: true, saveUninitialized: true }));
 
 // bodyParser middleware
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 // flash middlemare
 app.use(flash());
@@ -42,7 +42,8 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use("/", require("./routes/index"));
+app.use("/", require("./routes"));
+app.use("/songs", require("./routes/songs"));
 
 // starting server
 app.listen(process.env.PORT || 3000, process.env.IP);
