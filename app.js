@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const flash = require("connect-flash");
 const session = require("express-session");
+const methodOverride = require("method-override");
 
 // setting up the app
 const app = express();
@@ -17,7 +18,8 @@ require('./config/passport')(passport);
 const User = require("./models/User");
 
 // connecting to DB
-mongoose.connect(process.env.MUSICAPPDB || "mongodb://localhost/music_app", { useNewUrlParser: true });
+const mongoURI = "mongodb://localhost:27017/music_app"
+mongoose.connect(process.env.MUSICAPPDB || mongoURI, { useNewUrlParser: true });
 
 // express session middleware
 app.use(session({ secret: process.env.SECRET || 'secret', resave: true, saveUninitialized: true }));
@@ -40,6 +42,9 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     next();
 });
+
+// Method Override middleware
+app.use(methodOverride("_method"));
 
 // routes
 app.use("/", require("./routes"));
