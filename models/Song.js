@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
 
 const SongSchema = mongoose.Schema({
+    name: String,
     uploadedBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        name: String
     },
     artist: String,
     genre: String,

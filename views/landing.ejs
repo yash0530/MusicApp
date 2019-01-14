@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Music</title>
     <link rel="stylesheet" href="/styles/landing.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
     <script type="text/javascript" src="/scripts/landing.js"></script>
 </head>
+
 <body>
     <!-- navbar -->
     <nav>
         <div class="nav-head">MUSIC</div>
         <ul class="nav-items">
             <% if (user) { %>
-                <a href="#"><%= user.name %></a>
-                <a href="/logout">Logout</a>
+            <a href="#">
+                <%= user.name %></a>
+            <a href="/logout">Logout</a>
             <% } else { %>
-                <a href="/login">Login</a>
-                <a href="/register">Join Now</a>
+            <a href="/login">Login</a>
+            <a href="/register">Join Now</a>
             <% } %>
         </ul>
     </nav>
@@ -93,4 +97,5 @@
 
     <!-- footer -->
 </body>
+
 </html>

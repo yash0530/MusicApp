@@ -19,6 +19,7 @@
 ### SONG
 | Fields                | Type                  |        |
 | --------------------- | --------------------- | ------ |
+| Name                  | String
 | uploadedBy            | User / Ref
 | artist                | String
 | genre                 | String

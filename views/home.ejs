@@ -1,0 +1,39 @@
+<% include ./partials/header %>
+
+<head>
+    <link rel="stylesheet" href="/styles/home.css">
+</head>
+
+<!-- header -->
+<div class="jumbotron main pl-md-5 pr-md-5">
+    <div class="heading-2">Hello,
+        <%= user.name %>!!
+    </div>
+    <p>Listen from our Collection, Anyhere | Anytime.</p>
+    <a class="btn btn-outline-secondary mt-3 pl-4 pr-4" href="/songs/new"> Upload Song</a>
+</div>
+
+<!-- Recently played -->
+<div class="jumbotron songs-item pl-md-5 pr-md-5">
+    <div class="heading-3">
+        Recently Played
+    </div>
+</div>
+
+<!-- Favourites -->
+<div class="jumbotron songs-item pl-md-5 pr-md-5">
+    <div class="heading-3">
+        Favourites
+    </div>
+</div>
+
+<!-- All Songs -->
+<div class="jumbotron songs-item pl-md-5 pr-md-5">
+    <div class="heading-3">
+        Songs
+    </div>
+</div>
+
+<% include ./partials/footer%>
+
+<script type="text/javascript" src="scripts/home.js"></script>

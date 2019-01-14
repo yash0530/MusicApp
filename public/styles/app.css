@@ -1,7 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
 
 * {
-    font-family: 'Montserrat', sans-serif !important;
+    font-family: 'PT Sans', sans-serif !important;
+}
+
+footer {
+    width: 100%;
+    padding: 50px;
 }
 
 .heading-1 {
@@ -22,6 +27,15 @@
 .navbar-light {
     background-color: #fff !important;
     box-shadow: 0px 1px #ccc;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+.body-content {
+    width: 100%;
+    margin-top: 56px;
 }
 
 .bg-light:hover {
@@ -30,4 +44,8 @@
 
 .navbar-brand {
     color: #ff5252 !important;
+}
+
+.btn {
+    border-radius: 12px;
 }

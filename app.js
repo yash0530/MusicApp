@@ -45,6 +45,7 @@ app.use(methodOverride("_method"));
 
 // routes
 app.use("/", require("./routes"));
+app.use("/", require("./routes/auth"));
 app.use("/songs", require("./routes/songs"));
 
 // starting server
