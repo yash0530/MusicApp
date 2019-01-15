@@ -9,6 +9,16 @@
 | GET            | /logout          | Logout user
 
 
+### USERS
+
+| Verb           | Route            | Description     
+| -------------- | ---------------- | --------------------
+| GET            | /users/:id       | Show user profile
+| GET            | /users/:id/edit  | Show user profile edit page
+| POST           | /users/:id/      | Edit user profile
+| GET            | /users/:id/:id_2 | user id following id2
+
+
 ### SONGS API
 
 | Verb           | Route            | Description     

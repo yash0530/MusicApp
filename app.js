@@ -47,6 +47,7 @@ app.use(methodOverride("_method"));
 app.use("/", require("./routes"));
 app.use("/", require("./routes/auth"));
 app.use("/songs", require("./routes/songs"));
+app.use("/users", require("./routes/users"));
 
 // starting server
 app.listen(process.env.PORT || 3000, process.env.IP);

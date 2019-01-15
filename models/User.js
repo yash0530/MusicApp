@@ -7,32 +7,26 @@ const UserSchema = mongoose.Schema({
     description: String,
     avatar: String,
     genre: Array(String),
-    recentlyPlayed: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'songs.file'
-        }
-    ],
-    favourites: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'songs.file'
-        }
-    ],
-    uploaded: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'songs.file'
-        }
-    ],
-    following: {
+    recentlyPlayed: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'songs.file'
+    }],
+    favourites: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'songs.file'
+    }],
+    uploaded: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'songs.file'
+    }],
+    following: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    },
-    followers: {
+    }],
+    followers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    },
+    }],
     created: { type: Date, default: Date.now }
 });
 

@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+<div class="container" style="margin-top: 75px;">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card">
+                <img class="card-img-top" src="/assets/default-userprofile.png" alt="<%= ret_user.name %>">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <%= ret_user.name %>
+                    </h4>
+                    <% if (user && !currUser) { %>
+                    <% if (!isFollowing) { %>
+                    <a href="<%= user._id %>/<%= ret_user._id %>" class="btn btn-outline-danger btn-sm">
+                        Follow
+                    </a>
+                    <% } else { %>
+                    <a href="#" class="btn btn-outline-danger btn-sm">
+                        Following
+                    </a>
+                    <% } %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

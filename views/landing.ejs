@@ -18,7 +18,7 @@
         <div class="nav-head">MUSIC</div>
         <ul class="nav-items">
             <% if (user) { %>
-            <a href="#">
+            <a href="/users/<%= user._id %>">
                 <%= user.name %></a>
             <a href="/logout">Logout</a>
             <% } else { %>

@@ -23,7 +23,7 @@
                 <ul class="navbar-nav">
                     <% if (user) { %>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="/users/<%= user._id %>">
                             <%= user.name %></a>
                     </li>
                     <li class="nav-item">
