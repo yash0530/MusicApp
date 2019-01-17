@@ -7,6 +7,8 @@ const multer = require("multer");
 const GridFsStorage = require("multer-gridfs-storage");
 const Grid = require("gridfs-stream");
 const middleware = require("../middlewares");
+const musicMetadata = require("music-metadata");
+const btoa = require("btoa");
 
 // Models
 const Song = require("../models/Song");
@@ -57,12 +59,47 @@ router.get("/new", middleware.isLoggedIn, (req, res) => {
 
 // CREATE ROUTE: POST /songs
 router.post("/", middleware.isLoggedIn, upload.single("file"), (req, res) => {
-    Song.findOneAndUpdate({ filename: req.filename },
-        { uploadedBy: { id: req.user._id, name: req.user.name }, ...req.body },
-        (err, song) => {
-            if (err) return res.status(500).json({ err: "Internal Server Error" });
-            res.redirect("/home");
-        });
+    Song.findOne({ filename: req.filename }, (err, song) => {
+        if (err)
+            return res.status(500).json({ err: "Something Went Wrong" });
+
+        else if (!song || song.length === 0)
+            return res.status(404).json({ err: "No Such File" });
+
+        else{
+            song.name = req.body.name;
+            song.artist = req.body.artist;
+            song.genre = req.body.genre;
+            song.year = req.body.year;
+
+            const songReadStream = gfs.createReadStream(song.filename);
+            musicMetadata.parseStream(songReadStream, "audio/mp3")
+                .then((songMetadata) => {
+                    const albumArt = songMetadata.common.picture[0];
+                    if(albumArt){
+                        var base64String = "";
+                        for (var i = 0; i < albumArt.data.length; i++) {
+                            base64String += String.fromCharCode(albumArt.data[i]);
+                        }
+                        const albumArtSrc = "data:" + albumArt.format + ";base64," + btoa(base64String);
+                        song.albumArt = albumArtSrc;
+                    }
+                    else{
+                        song.albumArt = "/assets/default-albumart.png";
+                    }
+                    song.save((err) => {
+                        if(err){
+                            return res.status(500).json({ err: "Something Went Wrong" });
+                        }
+                    });
+                    res.redirect("/home");
+                })
+                .catch((reason) => {
+                    console.log(reason);
+                    res.redirect("/home");
+                });
+        }
+    });
 });
 
 // SHOW ROUTE: GET /songs/:id

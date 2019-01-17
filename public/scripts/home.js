@@ -6,7 +6,7 @@ $(() => {
                 $("#songs").append(`
                 <div class="col-md-4 col-6 col-lg-3 col-xl-2 song-play" id="${song.filename}">
                     <div class="song-container">
-                        <img src="/assets/default-albumart.png">
+                        <img src="${song.albumArt}">
                         <div><strong>${song.name}</strong></div>
                         <div><strong>Artist</strong> ${song.artist}</div>
                         <div><strong>Genre</strong> ${song.genre}</div>

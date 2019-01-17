@@ -19,9 +19,10 @@
 ### SONG
 | Fields                | Type                  |        |
 | --------------------- | --------------------- | ------ |
-| Name                  | String
+| name                  | String
 | uploadedBy            | User / Ref
 | artist                | String
+| albumArt              | String
 | genre                 | String
 | year                  | Number
 | length                | Number                | GridFs

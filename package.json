@@ -19,6 +19,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "btoa": "^1.2.1",
     "connect-flash": "^0.1.1",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
@@ -28,6 +29,7 @@
     "mongoose": "^5.4.2",
     "multer": "^1.4.1",
     "multer-gridfs-storage": "^3.2.3",
+    "music-metadata": "^3.5.1",
     "nodemon": "^1.18.9",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"

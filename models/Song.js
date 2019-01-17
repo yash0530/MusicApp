@@ -10,6 +10,7 @@ const SongSchema = mongoose.Schema({
         name: String
     },
     artist: String,
+    albumArt: String,
     genre: String,
     year: Number,
     length: Number,
