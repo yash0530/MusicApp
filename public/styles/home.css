@@ -26,7 +26,7 @@
     display: flex;
     flex-direction: column;
     border: 1px solid rgba(0, 0, 0, 0.3);
-    padding-bottom: 10px;
+    padding-bottom: 0;
     margin-bottom: 20px;
 }
 
@@ -37,6 +37,15 @@
 
 .song-container div {
     padding-left: 15px;
+}
+
+.song-container form {
+    display: inline;
+}
+
+.song-container .btn {
+    border-radius: 0;
+    width: 100%;
 }
 
 .song-container:hover {

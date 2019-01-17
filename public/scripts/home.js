@@ -10,6 +10,10 @@ $(() => {
                         <div><strong>${song.name}</strong></div>
                         <div><strong>Artist</strong> ${song.artist}</div>
                         <div><strong>Genre</strong> ${song.genre}</div>
+                        <a href="/songs/${song.filename}/edit" class="btn btn-xs btn-outline-warning">Edit</a>
+                        <form action="/songs/${song.filename}?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-outline-danger">Delete</button>
+                        </form>
                     </div>
                 </div>
                 `);
