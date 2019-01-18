@@ -1,3 +1,4 @@
+
 $(() => {
     $.ajax("/songs")
         .done((songs) => {
@@ -18,18 +19,52 @@ $(() => {
                 </div>
                 `);
             });
+
+            var song = new Howl({
+                src: [""]
+            });
             $(".song-play").on("click", function () {
+                song.unload();
+                song = new Howl({
+                    src: ["/songs/" + $(this).attr("id")]
+                });
 
-                $("audio").attr("src", `/songs/${$(this).attr("id")}`);
+                song.once("load", function(){
+                    console.log(song);
+                    song.play();
+                });
 
-                console.log(`/songs/${$(this).attr("id")}`);
-                $.ajax(`/songs/${$(this).attr("id")}`)
-                    .done(function (data) {
-                        console.log(data);
-                        $('audio #source').attr('src', data);
-                        $('audio').get(0).load();
-                        $('audio').get(0).play();
-                    })
+                $("#howler-play").on("click", function(){
+                    if(!song.playing()){
+                        song.play();
+                    };
+                });
+            
+                $("#howler-pause").on("click", function(){
+                    song.pause();
+                });
+            
+                $("#howler-stop").on("click", function(){
+                    song.stop();
+                });
+            
+                $("#howler-volup").on("click", function(){
+                    var vol = song.volume();
+                    vol += 0.1;
+                    if (vol > 1) {
+                        vol = 1;
+                    }
+                    song.volume(vol);
+                });
+            
+                $("#howler-voldown").on("click", function(){
+                    var vol = song.volume();
+                    vol -= 0.1;
+                    if (vol < 0) {
+                        vol = 0;
+                    }
+                    song.volume(vol);
+                });
             });
         });
 });
